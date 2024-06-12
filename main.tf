@@ -82,20 +82,8 @@ resource "aws_instance" "my_instance" {
 
   associate_public_ip_address = true
 
- # key_name = "your-key-name"  # Replace with your key pair name
- # User data script to install Jenkins
-  user_data = <<-EOF
-              #!/bin/bash
-              yum update -y
-              yum install -y java-1.8.0-openjdk
-              wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
-              rpm --import http://pkg.jenkins-ci.org/redhat-stable/jenkins.io.key
-              yum install -y jenkins
-              service jenkins start
-              chkconfig jenkins on
-              EOF
-
-
+ key_name = "KeysforEKS"  # Replace with your key pair name
+ 
 }
 
 # Output the instance's public IP
